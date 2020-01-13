@@ -12,10 +12,10 @@ class Index extends Controller
 {
     public $array = ['张一','张二','张三','张四','张武'];
     function index(){
-        // $echostr =request()->echostr;
-        // if(!empty($echostr)){
-        //     echo $echostr;die;
-        // }
+        $echostr =request()->echostr;
+        if(!empty($echostr)){
+            echo $echostr;
+        }
         $xml=file_get_contents('php://input');
         file_put_contents('check.txt',"\n".$xml,FILE_APPEND);
         $xmlOpj = simplexml_load_string($xml);
@@ -101,6 +101,13 @@ class Index extends Controller
             ->first()->toArray();
             $Wmaterial_id=$WmaterialInfo['Wmaterial_id'];
             Wechat::replyImg($xmlOpj,$Wmaterial_id);
+            $type = "image";    
+            $media_id = $xmlOpj->MediaId; //获取mediaId
+            downloadImg($media_id,$type);
+        }else if($xmlOpj->MsgType=="video"){
+            $type = "video";    
+            $media_id = $xmlOpj->MediaId; //获取mediaId
+            downloadImg($media_id,$type);
         }
     }
     /*
