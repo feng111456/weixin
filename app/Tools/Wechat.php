@@ -99,4 +99,17 @@ class Wechat
         $ticket = "https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=".$ticket;
         return $ticket;
 	}
+	//下载用户上传的文件
+	public static function downloadImg($media_id,$type)
+	{
+		$token = self::GetToken();//获取token凭证
+		$url = "https://api.weixin.qq.com/cgi-bin/media/get?access_token=".$token."&media_id=".$media_id;
+		$file = file_get_contents($url);
+		if($type=='image'){
+			$file_name = date("YmdHis") . rand(1111, 9999) . '.jpg';
+		}else{
+			$file_name = date("YmdHis") . rand(1111, 9999) . '.mp4';
+		}
+		$res = file_put_contents($file_name,$file);
+	}
 }

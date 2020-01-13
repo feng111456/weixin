@@ -8,10 +8,11 @@ use App\Tools\Wechat;
 class Index extends Controller
 {
     function index(){
-        //echo  $echostr =request()->echostr;//配置微信号
+        echo  $echostr =request()->echostr;//配置微信号
         $xml=file_get_contents('php://input');
         file_put_contents('check.txt',"\n".$xml,FILE_APPEND);
         $xmlOpj = simplexml_load_string($xml);
+        $openid = $xmlOpj->FromUserName; //获取用户openid
         //判断是关注事件还是文本事件
         if($xmlOpj->MsgType=="event" && $xmlOpj->Event=="subscribe"){
             //说明是关注事件
@@ -46,6 +47,14 @@ class Index extends Controller
                     $value = "请按照搜索规范查询";
                     Wechat::fudu($xmlOpj,$value); 
             }
+        }else if($xmlOpj->MsgType=="image"){
+            $type = "image";    
+            $media_id = $xmlOpj->MediaId; //获取mediaId
+            downloadImg($media_id,$type);
+        }else if($xmlOpj->MsgType=="video"){
+            $type = "video";    
+            $media_id = $xmlOpj->MediaId; //获取mediaId
+            downloadImg($media_id,$type);
         }
         
     }

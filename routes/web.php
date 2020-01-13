@@ -61,10 +61,9 @@ Route::prefix('material')->group(function () {
     Route::get('index','admin\Material@index'); 
     Route::get('create','admin\Material@create');
     Route::post('store','admin\Material@store');
-    Route::get('destroy/{id}','admin\Material@destroy');
-    Route::get('edit/{id}','admin\Material@edit');
-    Route::post('update/{id}','admin\Material@update');
     Route::any('addMenu','admin\Material@addMenu');
+    Route::any('getAuth','admin\Material@getAuth');
+    Route::any('test','admin\Material@test');
 });
 /**新闻 */
 Route::prefix('news')->group(function () {

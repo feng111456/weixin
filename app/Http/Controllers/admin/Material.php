@@ -51,51 +51,6 @@ class Material extends Controller
             echo "<script>alert('失败');location.href='/material/create'</script>";
         }
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
     /**添加菜单 */
     public function addMenu()
     {
@@ -136,4 +91,24 @@ class Material extends Controller
         $res =Curl::Curl_post($url,$json);
         dd($res);
     }
+    // public function test()
+    // {
+    //     $appid = Wechat::appid;
+    //     $redirect_uri = "urlEncode(1906zhangpanfeng.zsjshaojie.top/admin/getAuth)";
+    //     $url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=".$appid."&redirect_uri=".$redirect_uri."&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect ";
+    //     echo $url;die;
+    //     $jsonInfo  = file_get_contents($url);
+    //     $arr_jsonInfo = json_decode($jsonInfo);
+    //     dd($arr_jsonInfo);
+    // }
+    //获取用户授权
+    // public function getAuth()
+    // {
+
+    // }
+    //加载保存用户发的文件
+    // public function tiLoad()
+    // {
+    //     // $data = file_get_contents("php://input");
+    // }
 }
