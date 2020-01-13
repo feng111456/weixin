@@ -12,10 +12,10 @@ class Index extends Controller
 {
     public $array = ['张一','张二','张三','张四','张武'];
     function index(){
-        $echostr =request()->echostr;
-        if(!empty($echostr)){
-            echo $echostr;die;
-        }
+        // $echostr =request()->echostr;
+        // if(!empty($echostr)){
+        //     echo $echostr;die;
+        // }
         $xml=file_get_contents('php://input');
         file_put_contents('check.txt',"\n".$xml,FILE_APPEND);
         $xmlOpj = simplexml_load_string($xml);
