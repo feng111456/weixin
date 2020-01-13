@@ -14,7 +14,7 @@ class Index extends Controller
     function index(){
         $echostr =request()->echostr;
         if(!empty($echostr)){
-            echo $echostr;
+            echo $echostr;die;
         }
         $xml=file_get_contents('php://input');
         file_put_contents('check.txt',"\n".$xml,FILE_APPEND);
