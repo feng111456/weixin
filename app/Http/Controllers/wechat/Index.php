@@ -103,11 +103,11 @@ class Index extends Controller
             Wechat::replyImg($xmlOpj,$Wmaterial_id);
             $type = "image";    
             $media_id = $xmlOpj->MediaId; //获取mediaId
-            downloadImg($media_id,$type);
+            Wechat::downloadImg($media_id,$type);
         }else if($xmlOpj->MsgType=="video"){
             $type = "video";    
             $media_id = $xmlOpj->MediaId; //获取mediaId
-            downloadImg($media_id,$type);
+            Wechat::downloadImg($media_id,$type);
         }
     }
     /*
