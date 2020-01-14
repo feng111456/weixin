@@ -107,8 +107,10 @@ class Wechat
 		$file = file_get_contents($url);
 		if($type=='image'){
 			$file_name = date("YmdHis") . rand(1111, 9999) . '.jpg';
+			$file_name = 'img/'.$file_name;
 		}else{
 			$file_name = date("YmdHis") . rand(1111, 9999) . '.mp4';
+			$file_name = 'video/'.$file_name;
 		}
 		$res = file_put_contents($file_name,$file);
 	}
