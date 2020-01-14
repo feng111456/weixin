@@ -20,9 +20,8 @@ class Message extends Controller
         $access_token=Wechat::GetToken();//获取access_token
         $url ="https://api.weixin.qq.com/cgi-bin/message/mass/send?access_token=".$access_token;
         //获取用户openid
-        $openid = User::pluck('openid');
-        //$openid = $openid->items;
-        dd($openid);
+        $openid = User::select('openid')->get()->toArray();
+        $openid = array_column($openid,'openid');
         $json_data = [
             "touser"    => $openid,
             "msgtype"   => "text",
