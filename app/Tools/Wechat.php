@@ -26,7 +26,7 @@ class Wechat
 			  <CreateTime>".time()."</CreateTime>
 			  <MsgType><![CDATA[text]]></MsgType>
 			  <Content><![CDATA[".$values."]]></Content>
-			</xml>";die;
+			</xml>";
 	}
 	//被动回复图片
 	public static function replyImg($xmlOpj,$Wmaterial_id)
