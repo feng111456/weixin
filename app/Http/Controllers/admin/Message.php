@@ -22,6 +22,7 @@ class Message extends Controller
         //获取用户openid
         $openid = User::pluck('openid');
         $openid = (array)$openid;
+        dd($openid);
         $json_data = [
             "touser"    => $openid,
             "msgtype"   => "text",
