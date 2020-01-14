@@ -21,6 +21,7 @@ class Message extends Controller
         $url ="https://api.weixin.qq.com/cgi-bin/message/mass/send?access_token=".$access_token;
         //获取用户openid
         $openid = User::pluck('openid');
+        dd($openid);
         $json_data = [
             "touser"    => $openid,
             "msgtype"   => "text",
@@ -28,6 +29,7 @@ class Message extends Controller
                 "content"   => $content
             ]
         ];
+        
         $res = Curl::Curl_post($url,$json_data);
         if($res['errcode'] > 0){
             echo '错误信息： ' . $response['errmsg'];
