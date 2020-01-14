@@ -84,3 +84,8 @@ Route::prefix('channel')->group(function () {
     Route::get('edit/{id}','admin\Channel@edit');
     Route::post('update/{id}','admin\Channel@update');
 });
+/**群发消息 */
+Route::prefix('message')->group(function () {
+    Route::get('create','admin\Message@create');
+    Route::post('store','admin\Message@store');
+});

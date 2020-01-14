@@ -102,8 +102,18 @@
                             </li>
                         </ul>
                     </li>
- 
-
+                    <li>
+                        <a href="#">
+                            <i class="fa fa fa-bar-chart-o"></i>
+                            <span class="nav-label">群发消息</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a class="J_menuItem" href="{{url('message/create')}}">群发消息编辑</a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </nav>

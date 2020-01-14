@@ -1,0 +1,27 @@
+<?php
+
+namespace App\Http\Controllers\admin;
+use App\Tools\Curl;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Model\User;
+use App\Tools\Wechat;
+
+class Message extends Controller
+{
+    //发送消息视图
+    function create()
+    {
+        return view('admin/message/create');
+    }
+    function store()
+    {
+        $content = request()->content;
+        $access_token=Wechat::GetToken();//获取access_token
+        $url ="https://api.weixin.qq.com/cgi-bin/message/mass/send?access_token=".$access_token;
+        //获取用户openid
+        $openid = User::pluck('openid');
+        dd($openid);
+
+    }
+}

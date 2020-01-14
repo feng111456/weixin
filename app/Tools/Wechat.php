@@ -114,4 +114,9 @@ class Wechat
 		}
 		$res = file_put_contents($file_name,$file);
 	}
+	/**群发消息的方法 */
+	public function mass()
+	{
+		
+	}
 }
