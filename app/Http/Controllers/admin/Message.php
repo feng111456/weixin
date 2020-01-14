@@ -29,7 +29,7 @@ class Message extends Controller
                 "content"   => $content
             ]
         ];
-        
+        $json_data = json_encode($json_data,JSON_UNESCAPED_UNICODE);
         $res = Curl::Curl_post($url,$json_data);
         if($res['errcode'] > 0){
             echo '错误信息： ' . $response['errmsg'];
