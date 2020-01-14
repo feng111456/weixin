@@ -26,7 +26,7 @@ class Message extends Controller
             "touser"    => $openid,
             "msgtype"   => "text",
             "text"      => [
-                "content"   => $content
+                "content"   => "111"
             ]
         ];
         
