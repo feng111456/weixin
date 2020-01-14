@@ -22,11 +22,12 @@ class Message extends Controller
         //获取用户openid
         $openid = User::select('openid')->get()->toArray();
         $openid = array_column($openid,'openid');
+        dd($openid);
         $json_data = [
             "touser"    => $openid,
             "msgtype"   => "text",
             "text"      => [
-                "content"   => "111"
+                "content"   => $content
             ]
         ];
         
