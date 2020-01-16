@@ -80,7 +80,7 @@ class Login extends Controller
             'touser'=>$openid,
             'template_id'=>"mloYmqhnAXpKqvBuRRv5vjVAISibFz-5xE04Hsr8QNs",
             'data'=>[
-                'name'=>[
+                'email'=>[
                         "value"=>$email,
                         "color"=>"#173177"
                 ],
