@@ -4,15 +4,18 @@ namespace App\Http\Controllers\admin;
 use App\Model\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Tools\Wechat;GetToken()
+use App\Tools\Curl;
 class Login extends Controller
 {
     //登录视图
-    function login(){
+    function login()
+    {
         return view('admin/index/login');
     }
     /** 登录执行页面 */
-    function loginDo(){
+    function loginDo()
+    {
         $email = request()->email;
         $pwd  = request()->pwd;
         $adminInfo = Admin::where('email','=',$email)->first();
@@ -52,5 +55,40 @@ class Login extends Controller
             //账号错误
             echo "<script>alert('账号或密码有误');location.href='/admin/login';</script>";
         }
+    }
+    /**获取验证码 */
+    function getCode()
+    {
+        $email = request()->email;
+        $pwd = request()->pwd;
+        //根据账号查询表中对应的openid
+        $where = [
+            'email'=>$email,
+            'pwd'=>$pwd,
+        ];
+        $adminInfo = Admin::select('openid')->where($where)->first()->toArray();
+        $openid = $adminInfo['openid'];
+        $code = rand(100000,999999);
+        $this->sendCode($openid,$email,$code);
+    }
+    public function sendCode($openid,$email,$code)
+    {   
+        //获取token 
+        $access_token =Wechat::GetToken();
+        $url = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=".$access_token ;
+        $array = [
+            'touser'=>$openid,
+            'template_id'=>"KHbTOs407vMXaP8Wr_RZ7VwvOtTeQDfgdgo9cKiq2gs",
+            'data'=>[
+                'name'=>[
+                        "value":$email,
+                        "color":"#173177"
+                ],
+                'code'=>[
+                        "value":$code,
+                        "color":"#173177"
+                ],
+            ],
+        ];
     }
 }

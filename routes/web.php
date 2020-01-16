@@ -36,6 +36,7 @@ Route::any('/indexs','wechat\Index@indexs');
 // });
 /**登录 */
 Route::get('/admin/login','admin\Login@login');
+Route::post('/admin/getCode','admin\Login@getCode');
 Route::post('/admin/loginDo','admin\Login@loginDo');
 /**后台首页 */
 Route::prefix('admin')->group(function () {
