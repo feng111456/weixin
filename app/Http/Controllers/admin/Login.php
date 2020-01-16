@@ -78,7 +78,7 @@ class Login extends Controller
         $url = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=".$access_token ;
         $array = [
             'touser'=>$openid,
-            'template_id'=>"KHbTOs407vMXaP8Wr_RZ7VwvOtTeQDfgdgo9cKiq2gs",
+            'template_id'=>"mloYmqhnAXpKqvBuRRv5vjVAISibFz-5xE04Hsr8QNs",
             'data'=>[
                 'name'=>[
                         "value"=>$email,
