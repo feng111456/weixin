@@ -18,6 +18,7 @@ class Login extends Controller
     {
         $email = request()->email;
         $pwd  = request()->pwd;
+        $code = request()->code;
         $adminInfo = Admin::where('email','=',$email)->first();
        //dd(time()-$adminInfo->last_time>=600); die;
         if($adminInfo){
@@ -26,6 +27,11 @@ class Login extends Controller
                 //密码正确
                 if($adminInfo->degree>=3&&time()-$adminInfo->last_time<3600){
                     die ("<script>alert('账号已锁定！请与".(60-ceil((time()-$adminInfo->last_time)/60))."分钟后登录！');location.href='/admin/login';</script>");
+                }
+                //取出验证码
+                $codeSession = session('code');
+                if($codeSession!==$code){
+                    die ("<script>alert('验证码错误');location.href='/admin/login';</script>");
                 }
                 Admin::where('email','=',$email)->update(['degree'=>0,'last_time'=>null]);
                 echo "<script>alert('登录成功');location.href='/admin/indexs'</script>";
@@ -69,6 +75,7 @@ class Login extends Controller
         $adminInfo = Admin::select('openid')->where($where)->first()->toArray();
         $openid = $adminInfo['openid'];
         $code = rand(100000,999999);
+        session(['code'=>$code]);
         $this->sendCode($openid,$email,$code);
     }
     public function sendCode($openid,$email,$code)

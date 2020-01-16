@@ -65,7 +65,19 @@
     $(function(){
         $.ajaxSetup({ headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') } });
         $(document).on('submit','#myform',function(){
-            return false;
+            var email = $("#email").val();
+                if(email==''){
+                    return false;
+                }
+            var pwd = $("#pwd").val();
+            if(pwd==''){
+                    return false;
+                }
+            var code = $("#code").val();
+            if(code==''){
+                    return false;
+                }
+            return true;
         })
         $(document).on('click','#getCode',function(){
             var email = $("#email").val();
