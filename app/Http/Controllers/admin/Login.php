@@ -81,12 +81,12 @@ class Login extends Controller
             'template_id'=>"KHbTOs407vMXaP8Wr_RZ7VwvOtTeQDfgdgo9cKiq2gs",
             'data'=>[
                 'name'=>[
-                        "value":$email,
-                        "color":"#173177"
+                        "value"=>$email,
+                        "color"=>"#173177"
                 ],
                 'code'=>[
-                        "value":$code,
-                        "color":"#173177"
+                        "value"=>$code,
+                        "color"=>"#173177"
                 ],
             ],
         ];
