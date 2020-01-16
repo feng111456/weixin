@@ -4,7 +4,7 @@ namespace App\Http\Controllers\admin;
 use App\Model\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Tools\Wechat;GetToken()
+use App\Tools\Wechat;
 use App\Tools\Curl;
 class Login extends Controller
 {
