@@ -90,5 +90,8 @@ class Login extends Controller
                 ],
             ],
         ];
+        $array = json_encode($array,JSON_UNESCAPED_UNICODE);
+        $res=Curl::Curl_post($url,$array);
+        dd(res);
     }
 }
