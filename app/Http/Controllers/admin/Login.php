@@ -30,8 +30,7 @@ class Login extends Controller
                 }
                 //取出验证码
                 $codeSession = session('code');
-                dd($codeSession);
-                if($codeSession!==$code){
+                if($codeSession!=$code){
                     die ("<script>alert('验证码错误！！');location.href='/admin/login';</script>");
                 }
                 Admin::where('email','=',$email)->update(['degree'=>0,'last_time'=>null]);
