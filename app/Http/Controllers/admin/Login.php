@@ -92,6 +92,11 @@ class Login extends Controller
         ];
         $array = json_encode($array,JSON_UNESCAPED_UNICODE);
         $res=Curl::Curl_post($url,$array);
-        dd($res);
+        $res = json_decode($res,true);
+        if($res['errcode']==0){
+            echo "发送成功";
+        }else{
+            echo '发送失败';
+        }
     }
 }
