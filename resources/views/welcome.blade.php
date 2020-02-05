@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    攀峰123
+                    攀峰的服务器页面
                 </div>
 
                 <div class="links">
